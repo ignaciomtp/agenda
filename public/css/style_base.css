@@ -1,0 +1,164 @@
+/* =========================
+   style_base.css
+   ========================= */
+
+/* ---- Reset y estilos base ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1efef;
+    color: #333;
+    line-height: 1.4;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---- Contenedor principal ---- */
+.container-white {
+    width: 90%;
+    max-width: 1200px;
+    min-height: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ---- Formularios ---- */
+form fieldset {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+form fieldset legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* ---- Botones ---- */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn:hover {
+filter: brightness(80%); /* reduce un 10% la luminosidad */
+}
+
+/* ---- Tablas generales ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #f8d8b5;
+}
+
+/* ---- Tipografía ---- */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0.75rem 0.5rem;
+}
+
+p {
+    margin: 0.25rem 0;
+}
+
+/* ---- Footer base ---- */
+.footer-bar {
+    background-color: #f8d8b5;
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.footer-bar a {
+    color: inherit;
+}
+
+/* ---- Responsive global ---- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container-white {
+        width: 95%;
+        padding: 15px;
+    }
+
+     h1 { font-size: 1.6em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; }
+    h4 { font-size: 1.05em; }
+    h5 { font-size: 0.95em; }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .container-white {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    h2 {
+        margin: 0.75rem 0.25rem;
+        font-size: 1.2em;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+}

@@ -1,0 +1,72 @@
+
+/* Contenedor general para formulario */
+.container-white {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px; /* más estrecho que formulario de citas */
+    margin: 50px auto 30px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Header del formulario */
+.form-header {
+    background-color: #f8d8b5;
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Cada fila del formulario */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Labels arriba del input */
+.form-row label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Inputs y password */
+.form-row input {
+    padding: 8px 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Botón de login */
+.form-row button {
+    background-color: #ffb366;
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.form-row button:hover {
+    background-color: #ffaa33;
+}
+
+/* Mensajes de error */
+.error-msg {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}

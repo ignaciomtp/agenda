@@ -1,0 +1,442 @@
+
+.agenda-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start; /* para que tengan la misma altura */
+}
+
+.agenda-layout > .container-white {
+  width: auto !important; /* anula el 90% */
+  max-width: none !important; /* anula el límite */
+  margin: 0; /* evita que se centre */
+}
+
+.citas-sin-usuario {
+  align-self: flex-start; /* sobrescribe el align-items del padre */
+  min-height: 0;
+}
+
+.citas-sin-usuario li,
+.cita {
+  cursor: pointer;
+}
+
+/* Determinar tamaño de container-white */
+.flex-4 {
+  flex: 4;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* --- Filtros y formulario superior --- */
+.filtros-agenda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: sans-serif;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+.selector-fecha,
+.selector-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 1 350px;
+  min-width: 280px;
+  max-width: 380px;
+  box-sizing: border-box;
+}
+
+.selector-fecha #fecha,
+.selector-usuario #Ref_Usuario {
+  margin-bottom: 5px;
+}
+
+.filtros-agenda select,
+.filtros-agenda input[type="date"],
+.filtros-agenda button {
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  flex: 1;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.filtros-agenda button {
+  background: #8b8d8f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 0 0 auto;
+}
+
+.filtros-agenda button:hover {
+  background: #232324;
+}
+
+.selector-usuario label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* --- Contenedor general de la agenda --- */
+.agenda-container {
+  width: 98%;
+  margin: 2rem auto;
+  font-family: sans-serif;
+}
+
+.agenda {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* --- Encabezado (nombres de usuarios) --- */
+.header-usuarios {
+  display: flex;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  height: 35px;
+}
+
+.usuario-nombre {
+  flex: 1;
+  text-align: center;
+  line-height: 35px;
+  font-weight: bold;
+  border-right: 1px solid #ddd;
+  color: #333;
+}
+
+.usuario-nombre:last-child {
+  border-right: none;
+}
+
+/* --- Zona del cuerpo: horas + citas --- */
+.zona-cuerpo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fila-hora {
+  display: flex;
+  height: 60px;
+  border-bottom: 1px solid #eee;
+}
+
+.hora-label {
+  flex: 0 0 80px;
+  text-align: center;
+  font-weight: 600;
+  line-height: 60px;
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+}
+
+.zona-calendario-fila {
+  flex: 1;
+  position: relative;
+  background: #fff;
+}
+
+.zona-calendario {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* --- Líneas divisorias --- */
+.linea-division {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #ccc;
+  z-index: 1;
+}
+
+.linea-hora {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #ddd;
+  z-index: 0;
+}
+
+/* --- Citas --- */
+.cita {
+  position: absolute;
+  border-radius: 6px;
+  border: 0.5px solid #bbb9b9;
+  padding: 4px 6px;
+  font-size: 0.85rem;
+  color: #003366;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.modal-confirmacion {
+  background-color: #fcfcfb;
+}
+
+/* --- Citas sin usuario --- */
+.citas-sin-usuario {
+    flex: 1;              /* ocupa menos espacio que la agenda si se usa flex junto con la agenda */
+    max-width: 25%;       /* opcional: limita el ancho máximo, ajustable */
+    min-width: 150px;     /* evita que desaparezca al reducir demasiado */
+    margin-left: 1rem;    /* separación respecto a la agenda */
+    overflow: hidden;     /* recorta contenido sobrante */
+}
+
+.citas-sin-usuario ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.citas-sin-usuario li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  min-height: 40px; /* altura mínima decente */
+  max-height: 60px; /* evita que crezca demasiado */
+  overflow: hidden; /* evita que el contenido desborde */
+  box-sizing: border-box;
+}
+
+.citas-sin-usuario li span {
+  display: block;
+  flex: 1 1 auto;        /* ocupa todo el espacio disponible */
+  overflow: hidden;
+  white-space: nowrap;    /* una sola línea */
+  text-overflow: ellipsis;/* pone "..." si el texto es largo */
+  margin-right: 0.5rem;  /* separación del botón */
+}
+
+.citas-sin-usuario li button {
+  flex: 0 0 auto;        /* tamaño fijo */
+  white-space: nowrap;
+}
+
+/* Modal */
+#detalleCitaModal .modal-content,
+#confirmacionCitaModal .modal-content {
+    border-radius: 12px;
+    padding: 15px;
+    background: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#detalleCitaModal .modal-header,
+#confirmacionCitaModal .modal-header {
+    background-color: #5c5e5e;
+    color: white;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+}
+
+#detalleCitaModal .modal-title,
+#confirmacionCitaModal .modal-title {
+    font-weight: 600;
+}
+
+#detalleCitaModal .modal-body p,
+#confirmacionCitaModal .modal-body p {
+    margin-bottom: 0.5rem;
+}
+
+#detalleCitaModal .modal-footer,
+#confirmacionCitaModal .modal-footer {
+    border-top: none;
+    justify-content: center;
+}
+
+#detalleCitaModal .modal-footer .btn-secondary,
+#confirmacionCitaModal .modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+#detalleCitaModal .modal-footer .btn-secondary:hover,
+#confirmacionCitaModal .modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.usuario-nombre {
+  position: relative; /* para el tooltip */
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.usuario-nombre span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.usuario-nombre:hover::after,
+.usuario-nombre.show-tooltip::after {
+  content: attr(data-nombre);
+  position: absolute;
+  background: #333;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  pointer-events: none;
+}
+
+/* Para pantallas grandes pero no tanto: 768px - 1300px */
+@media (max-width: 1600px) and (min-width: 768px) {
+    .citas-sin-usuario {
+      font-size: 0.9rem;
+    }
+
+    .citas-sin-usuario li {
+        flex-direction: column;       /* texto arriba y botón abajo */
+        align-items: center;      /* elementos centrados */
+        min-height: 60px;
+        max-height: none;
+        padding: 0.5rem 0.6rem;
+        gap: 0.3rem;                  /* separación entre texto y botón */
+    }
+
+    .citas-sin-usuario li span {
+        flex: 1 1 auto;               /* ocupa el espacio disponible */
+        overflow: hidden;
+        white-space: nowrap;          /* evita saltos de línea */
+        text-overflow: ellipsis;      /* puntos suspensivos si es necesario */
+        width: 100%;                  /* ocupa todo el ancho disponible */
+        text-align: center;           /* centrado dentro del li */
+    }
+
+    .citas-sin-usuario li button {
+        flex: 0 0 auto;
+        min-width: 100px;
+        font-size: 0.85rem;           /* botón más pequeño */
+        padding: 4px 6px;
+    }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+
+  /* La agenda pasa a columna */
+  .filtros-agenda {
+    flex-direction: column !important;
+    align-items: stretch !important; /* que los hijos ocupen todo el ancho */
+  }
+
+  /* La agenda pasa a columna */
+  .agenda-layout {
+    flex-direction: column;
+    align-items: stretch; /* que todos los hijos ocupen el ancho */
+  }
+
+  .agenda-layout > .container-white {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Bloque de citas sin usuario arriba y ancho completo */
+  .citas-sin-usuario {
+    order: -1;          /* lo sube arriba */
+    width: 100%;        /* ocupa todo el ancho */
+    align-self: stretch !important; /* sobrescribe el flex-start */
+    margin-bottom: 1rem; /* separa de la agenda */
+  }
+
+  /* El contenedor de la agenda también ancho completo */
+  .agenda-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+ /* Formulario filtros apilado */
+  .filtros-agenda {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 0.8rem !important;
+    padding: 0.8rem;
+  }
+
+  /* Div interno que contiene los 2 selectores y botón */
+  .filtros-agenda > div {
+    flex-direction: column !important;
+    align-items: stretch !important; /* cada bloque se estira al ancho del form */
+    width: 100%;
+    max-width: 100%; /* evita límite de 350px */
+  }
+
+  /* Selector fecha y usuario */
+   .selector-fecha,
+  .selector-usuario {
+    flex: 0 0 auto !important; /* no crecer en altura */
+    width: 100%;               /* ocupar todo el ancho del form */
+    max-width: 100%;           /* no limitarse a 320px */
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 0.4rem !important;
+    justify-content: center;   /* centra horizontalmente */
+    align-items: center;       /* centra verticalmente */
+  }
+
+  .selector-fecha input,
+  .selector-usuario select {
+    width: 100%; /* se adaptan al ancho del contenedor */
+    max-width: 300px;
+    margin: 0 !important;  /* asegura que se centren */
+  }
+
+  /* Botones prev/next */
+  .selector-fecha button {
+    padding: 0.4rem 0.6rem; /* igual que en escritorio */
+    height: auto !important;
+    min-width: 36px;        /* opcional: asegura un ancho mínimo */
+  }
+
+  /* Botón Filtrar */
+  .filtros-agenda button[type="submit"] {
+    width: auto;
+    max-width: 200px;
+    height: auto !important;
+    padding: 6px 12px;
+    align-self: center;
+  }
+
+}

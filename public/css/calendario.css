@@ -1,0 +1,91 @@
+/* tabla del calendario */
+.calendar {
+    width: 100%;
+    max-width: 800px; /* opcional: limita ancho máximo */
+    margin: 0 auto;   /* centra la tabla */
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 1.2rem; /* hace los números más grandes */
+}
+
+
+/* cabeceras de la tabla (Lun, Mar...) */
+.calendar th {
+    background-color: #f8d8b5;
+    color: black;
+    padding: 12px 0;
+    border: 1px solid #bbbaba; /* borde visible */
+}
+
+/* celdas del calendario */
+.calendar td {
+    padding: 18px 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #bbbaba; /* borde visible */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.calendar th,
+.calendar td {
+    text-align: center;      
+    vertical-align: middle;  /* centra vertical */
+    padding: 25px 0;
+}
+
+/* hover sobre cualquier día */
+.calendar td:hover {
+    background-color: #ffc107; /* amarillo Bootstrap */
+    color: #212529;
+}
+
+/* días con citas */
+.has-appointment {
+    background-color: #9d67f3; 
+    color: white;
+    font-weight: bold;
+    border-radius: 40%;
+    transition: transform 0.2s;
+}
+
+.has-appointment:hover {
+    transform: scale(1.1);
+}
+
+/* día seleccionado */
+.selected {
+    border: 3px solid #0d6efd; /* azul Bootstrap */
+    border-radius: 50%;
+    background-color: #e7f1ff;
+}
+
+/* grupo de botones debajo del calendario */
+.btn-group {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;           /* Flexbox para alinear horizontalmente */
+    justify-content: center; /* Centrar los botones */
+    gap: 2px;               /* Espacio entre botones */
+}
+
+.btn-group .btn {
+    flex: 0 0 150px;  /* ancho fijo de 150px */
+    font-weight: bold;
+    text-align: center; /* centrar texto dentro del botón */
+}
+
+select {
+    margin: 0;
+}
+
+/* responsive: celdas más pequeñas en móvil */
+@media (max-width: 576px) {
+    .calendar th, .calendar td {
+        padding: 12px 0;
+    }
+    .btn-group .btn {
+        min-width: 100px;
+        font-size: 0.9rem;
+    }
+}

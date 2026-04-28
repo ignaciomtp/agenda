@@ -1,0 +1,111 @@
+/* Header del formulario */
+.form-header {
+    background-color: #f8d8b5;
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Botón guardar */
+.form-header button {
+    background-color: #ffb366;
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-header button:hover {
+    background-color: #ffaa33;
+}
+
+/* Cada fila del formulario */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Labels a la izquierda */
+.form-row label {
+    width: 120px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Inputs, selects y textarea igual tamaño */
+.form-row input,
+.form-row select:not(.select-time),
+.form-row textarea {
+  flex: 1;
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* foco (incluye focus-visible) - fuerza la prioridad */
+.form-row input:focus,
+.form-row select:not(.select-time):focus,
+.form-row textarea:focus,
+.form-row input:focus-visible,
+.form-row select:not(.select-time):focus-visible,
+.form-row textarea:focus-visible {
+  background-color: #f0f0f0 !important;
+  border-color: #ccc !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Si Bootstrap añade la clase .form-control a los inputs */
+.form-row .form-control:focus,
+.form-row .form-control:focus-visible {
+  background-color: #f0f0f0 !important;
+  border-color: #ccc !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Sobrescribir autofill de Chrome/Chromium */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f0f0f0 inset !important;
+  box-shadow: 0 0 0px 1000px #f0f0f0 inset !important;
+  -webkit-text-fill-color: #000 !important; /* texto negro */
+}
+
+/* Por si algún agente aplica background al placeholder al focus */
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: #666;
+}
+
+/* Select de hora (horaInicioHora, horaInicioMinutos) */
+.select-time {
+    width: 80px;  /* como antes */
+    margin-right: 5px;
+    padding: 6px 8px; /* mantiene el padding pequeño */
+    font-size: 16px;
+    background-color: #f0f0f0; /* fondo gris */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Textarea altura */
+.form-row textarea {
+    height: 80px;
+    resize: vertical;
+}

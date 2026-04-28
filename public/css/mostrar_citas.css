@@ -1,0 +1,108 @@
+/* Hacer el container más ancho y responsive */
+.container-white {
+    max-width: 1200px;       /* Más ancho que el container normal */
+    width: 95%;              /* Se reduce un poco en pantallas pequeñas */
+    padding: 1rem 2rem;
+}
+
+/* Tabla responsive */
+.table {
+    width: 100%;
+    table-layout: auto;
+    overflow-x: auto;
+}
+
+/* Mantener la alineación centrada */
+td, th {
+    text-align: center;
+    vertical-align: middle; /* importante para alinear con la fila */
+}
+
+/* Separar los botones */
+td.text-center .enviar-recordatorio {
+    display: inline-block;
+    margin: 0 2px; /* espacio horizontal entre botones */
+    padding: 0.2rem;
+    line-height: 1;
+}
+
+td.text-center i {
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+.collapse-button {
+    margin-top: 1rem;
+}
+
+/* Modal */
+#detalleCitaModal .modal-content {
+    border-radius: 12px;
+    padding: 15px;
+    background: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#detalleCitaModal .modal-header {
+    background-color: #5c5e5e;
+    color: white;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+}
+
+#detalleCitaModal .modal-title {
+    font-weight: 600;
+}
+
+#detalleCitaModal .modal-body p {
+    margin-bottom: 0.5rem;
+}
+
+#detalleCitaModal .modal-footer {
+    border-top: none;
+    justify-content: center;
+}
+
+/* Responsive: ajustar tabla en pantallas pequeñas */
+@media (max-width: 850px) {
+    .container-white {
+        width: 90%;
+        padding: 1rem;
+    }
+    .table th, .table td, li {
+        font-size: 0.9rem;
+    }
+    td.text-center i {
+        font-size: 1rem;
+    }
+    .botones-recordatorio {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .botones-recordatorio button {
+        width: 100%;
+        max-width: 350px;
+        margin-right: 0 !important; 
+    }
+
+    .me-1 {
+        margin: 0 0 0.25rem 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-white {
+        width: 100%;
+        padding: 0.5rem;
+    }
+    .table th, .table td, li {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+    td.text-center {
+        flex-wrap: wrap; /* los botones pueden ir a otra línea si hace falta */
+    }
+}
