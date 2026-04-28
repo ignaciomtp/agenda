@@ -5,6 +5,7 @@ use Twilio\Rest\Client;
 
 require_once __DIR__ . '/../../vendor/autoload.php'; // PHPMailer y Twilio
 include_once __DIR__ . '/altiriaSMS.php';
+include_once __DIR__ . '/WhatsAppService.php';
 
 /**
  * Gestiona el envío de email a través de PHPMailer
@@ -94,7 +95,8 @@ function enviarEmailRecordatorio(array $cita, array $config, string $header, str
  */
 function enviarSmsRecordatorio(array $cita, string $mensaje, string $remitente, PDO $conn): string {
     try {
-        $telefono = normalizarTelefono($cita['Telefono']);
+        //$telefono = normalizarTelefono($cita['Telefono']);
+        $telefono = "34634610794";
         // Obtener credenciales Altiria del cliente desde la BD
         $stmt = $conn->prepare("SELECT SMS_Envio_Usuario, SMS_Envio_Contra FROM Configuracion2");
         $stmt->execute();
@@ -130,7 +132,13 @@ function enviarSmsRecordatorio(array $cita, string $mensaje, string $remitente, 
  * @return string                   Resultado del proceso de envío
  */
 function enviarWaRecordatorio(array $cita, string $sid, string $token, string $telefonoTwilioWA, PDO $conn): string {
+    $telefono = "34634610794";
+    $mensaje = "Recuerda que tienes una cita con nosotros el ".$cita['Fecha']. " a las ".$cita['Hora'];
+
+    $whatsapp = new WhatsAppService();
+
     try {
+        /*
         $twilio = new Client($sid, $token);
         $telefono = normalizarTelefono($cita['Telefono']);
         
@@ -141,6 +149,10 @@ function enviarWaRecordatorio(array $cita, string $sid, string $token, string $t
             "body" => "Recuerda que tienes una cita con nosotros"
             )    
         );
+        */
+       
+        $whatsapp->sendTextMessage($telefono, $mensaje);
+
         $result = '<div class="alert alert-success" role="alert">✅ WhatsApp enviado a ' . $telefono . '</div>';
         marcarRecordatorioEnviado($conn, $cita['Ref_Agenda'], 'whatsapp');
         return $result;

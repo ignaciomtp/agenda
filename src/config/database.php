@@ -33,7 +33,12 @@ function conectarPDO()
     }
 
     try {
-        $conn = new PDO("sqlsrv:Server=$serverName;Database=$database", $username, $password);
+        //$conn = new PDO("sqlsrv:Server=$serverName;Database=$database", $username, $password);
+        $conn = new PDO(
+            "sqlsrv:Server=$serverName;Database=$database;TrustServerCertificate=true;Encrypt=false",
+            $username,
+            $password
+        );
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch (PDOException $e) {

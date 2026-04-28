@@ -4,6 +4,7 @@ session_start();
 if(empty($_SESSION['Usuario'])){
     $mostrarMenu = false; // así el header no mostrará los botones
 }
+
 // Ruta al config.ini
 $config = parse_ini_file(__DIR__ . '/../src/config/config.ini', true);
 $nombreEmpresa = $config['config']['Nombre_Empresa'];
