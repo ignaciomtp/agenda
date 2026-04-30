@@ -56,10 +56,10 @@
     <link rel="stylesheet" href="../css/mostrar_citas.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <?php include __DIR__ . '/../../partials/header.php'; ?>
 
-    <div class="container-white">
+    <div class="container-white flex-grow-1">
         <h2 class="mb-4 text-center">Citas del <?= htmlspecialchars(date('d-m-Y', strtotime($fecha))) ?></h2>
 
     <!-- Mensajes de éxito o error en $_SESSION['success_msg'] o $_SESSION['error_msg'] -->

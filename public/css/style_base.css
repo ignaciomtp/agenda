@@ -14,7 +14,7 @@ body {
     background-color: #f1efef;
     color: #333;
     line-height: 1.4;
-    padding: 20px;
+    
 }
 
 a {
@@ -103,10 +103,9 @@ p {
 
 /* ---- Footer base ---- */
 .footer-bar {
-    background-color: #f8d8b5;
+    background-color: #FFF;
     text-align: center;
     padding: 15px;
-    border-radius: 12px;
     box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
     font-weight: 700;
     margin-top: 20px;

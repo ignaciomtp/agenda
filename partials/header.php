@@ -11,7 +11,7 @@ $nombreEmpresa = $config['config']['Nombre_Empresa'];
 // $basePath es la ruta base del proyecto desde la raíz del servidor
 // Se genera en /src/config/paths.php
 ?>
-<header class="top-bar">
+<header class="top-bar mb-5">
     <div class="logo">
         <a href="<?= $basePath . 'index.php' ?>" class="logo-link">
             <img src="<?= $basePath ?>img/eclipse.ico" alt="Eclipse" class="logo-img" width="40" height="40">

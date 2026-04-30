@@ -6,6 +6,7 @@ use Twilio\Rest\Client;
 require_once __DIR__ . '/../../vendor/autoload.php'; // PHPMailer y Twilio
 include_once __DIR__ . '/altiriaSMS.php';
 include_once __DIR__ . '/WhatsAppService.php';
+include_once __DIR__ . '/smsSender.inc.php';
 
 /**
  * Gestiona el envío de email a través de PHPMailer
@@ -94,9 +95,22 @@ function enviarEmailRecordatorio(array $cita, array $config, string $header, str
  * @return string           Resultado del proceso de envío
  */
 function enviarSmsRecordatorio(array $cita, string $mensaje, string $remitente, PDO $conn): string {
+    
+    //$telefono = normalizarTelefono($cita['Telefono']);
+    $telefono = "34661549036";
+    $config = parse_ini_file(__DIR__ . '/../config/config.ini', true);
+    $dinaUser = $config['dinahosting']['user'];
+    $dinaPass = $config['dinahosting']['password'];
+    $dinaAccount = $config['dinahosting']['account'];
+
+    $mensaje = "Recuerda que tienes una cita con nosotros";
+
+    $sms = new smsSender($dinaUser, $dinaPass, $dinaAccount);
+
     try {
-        //$telefono = normalizarTelefono($cita['Telefono']);
-        $telefono = "34634610794";
+        
+
+        /*
         // Obtener credenciales Altiria del cliente desde la BD
         $stmt = $conn->prepare("SELECT SMS_Envio_Usuario, SMS_Envio_Contra FROM Configuracion2");
         $stmt->execute();
@@ -111,6 +125,11 @@ function enviarSmsRecordatorio(array $cita, string $mensaje, string $remitente, 
         } 
         
         enviarSMSAltiria($telefono, $mensaje, $usuario, $clave, $remitente, false);
+        */
+
+
+        $sms->sendMessage([$telefono], $mensaje);  
+
         $result = '<div class="alert alert-success" role="alert">📱 SMS enviado a ' . $telefono . ' correctamente.</div>';
         marcarRecordatorioEnviado($conn, $cita['Ref_Agenda'], 'sms');
                 
@@ -132,7 +151,7 @@ function enviarSmsRecordatorio(array $cita, string $mensaje, string $remitente, 
  * @return string                   Resultado del proceso de envío
  */
 function enviarWaRecordatorio(array $cita, string $sid, string $token, string $telefonoTwilioWA, PDO $conn): string {
-    $telefono = "34634610794";
+    $telefono = "34661549036";
     $mensaje = "Recuerda que tienes una cita con nosotros el ".$cita['Fecha']. " a las ".$cita['Hora'];
 
     $whatsapp = new WhatsAppService();
