@@ -44,7 +44,7 @@ try {
     <?php endif; ?>
 
     
-    <div class="row justify-content-center mb-3">
+    <div class="d-flex justify-content-center mb-3">
         <div class="col-auto d-flex align-items-center me-3">
             <label for="mes" class="me-2 mb-0">Mes:</label>
             <select id="mes" class="form-select">

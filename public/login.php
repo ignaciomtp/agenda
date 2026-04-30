@@ -76,11 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="css/style_base.css">
     <link rel="stylesheet" href="css/formulario_login.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Header -->
     <?php include __DIR__ . '/../partials/header.php'; ?>
 
-    <div class="container-white">
+    <div class="container-white flex-grow-1">
         <div class="form-header">
             <h1>Iniciar Sesión</h1>
         </div>
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" required>
             </div>
-            <div class="form-row">
+            <div class="form-row btn-dark">
                 <button type="submit">Entrar</button>
             </div>
         </form>

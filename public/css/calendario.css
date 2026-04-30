@@ -11,7 +11,7 @@
 
 /* cabeceras de la tabla (Lun, Mar...) */
 .calendar th {
-    background-color: #f8d8b5;
+    background-color: #f8f9fa;
     color: black;
     padding: 12px 0;
     border: 1px solid #bbbaba; /* borde visible */
