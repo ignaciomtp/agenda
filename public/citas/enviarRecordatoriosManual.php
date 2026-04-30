@@ -143,11 +143,11 @@ try {
     <link rel="stylesheet" href="../css/style_base.css">
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- header -->
     <?php include __DIR__ . '/../../partials/header.php'; ?>
 
-    <div id="form-cita" style="margin-top: 1rem;">
+    <div id="form-cita" style="margin-top: 1rem;" class="flex-grow-1">
         <?php 
         if (!empty($resultado)) {
             echo implode($resultado); 

@@ -20,11 +20,11 @@ $nombreEmpresa = $config['config']['Nombre_Empresa'];
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style_base.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Header -->
     <?php include __DIR__ . '/../partials/header.php'; ?>
 
-    <div class="container-white">
+    <div class="container-white flex-grow-1">
             <h1>Página principal</h1>
     </div>
     <!-- Footer -->

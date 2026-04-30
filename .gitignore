@@ -13,7 +13,7 @@
 /.zed
 /auth.json
 /node_modules
-/config/config.ini
+/src/config/config.ini
 /public/build
 /public/hot
 /public/storage

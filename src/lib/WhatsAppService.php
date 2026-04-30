@@ -27,15 +27,24 @@ class WhatsAppService
         ]);
     }
 
-    public function sendTemplate(string $to, string $templateName, string $languageCode = 'es'): array
+    public function sendTemplate(string $to, string $templateName, string $fecha, string $hora, string $languageCode = 'es'): array
     {
         return $this->post([
             'messaging_product' => 'whatsapp',
             'to'                => $to,
             'type'              => 'template',
             'template'          => [
-                'name'     => $templateName,
-                'language' => ['code' => $languageCode],
+                'name'       => $templateName,
+                'language'   => ['code' => $languageCode],
+                'components' => [          
+                    [                      
+                        'type'       => 'body',
+                        'parameters' => [
+                            ['type' => 'text', 'text' => $fecha],
+                            ['type' => 'text', 'text' => $hora],
+                        ],
+                    ],
+                ],
             ],
         ]);
     }
@@ -43,7 +52,6 @@ class WhatsAppService
     private function post(array $body): array
     {
         $ch = curl_init($this->baseUrl);
-
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST           => true,
@@ -51,10 +59,11 @@ class WhatsAppService
                 'Content-Type: application/json',
                 'Authorization: Bearer ' . $this->token,
             ],
-            CURLOPT_POSTFIELDS     => json_encode($body),
+            CURLOPT_POSTFIELDS => json_encode($body),
         ]);
 
-        $response = curl_exec($ch);
+        $response   = curl_exec($ch);
+        $httpCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE); // ← añadir esto
 
         if (curl_errno($ch)) {
             $error = curl_error($ch);
@@ -64,6 +73,13 @@ class WhatsAppService
 
         curl_close($ch);
 
-        return json_decode($response, true) ?? [];
+        $decoded = json_decode($response, true) ?? [];
+
+        if ($httpCode >= 400) {  // ← y esto
+            throw new RuntimeException("Error {$httpCode}: " . json_encode($decoded));
+        }
+
+        return $decoded;
     }
+    
 }

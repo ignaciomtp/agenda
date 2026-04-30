@@ -152,6 +152,7 @@ function enviarSmsRecordatorio(array $cita, string $mensaje, string $remitente, 
  */
 function enviarWaRecordatorio(array $cita, string $sid, string $token, string $telefonoTwilioWA, PDO $conn): string {
     $telefono = "34661549036";
+    //$telefono = "34634610794";
     $mensaje = "Recuerda que tienes una cita con nosotros el ".$cita['Fecha']. " a las ".$cita['Hora'];
 
     $whatsapp = new WhatsAppService();
@@ -170,7 +171,7 @@ function enviarWaRecordatorio(array $cita, string $sid, string $token, string $t
         );
         */
        
-        $whatsapp->sendTextMessage($telefono, $mensaje);
+        $whatsapp->sendTemplate($telefono, 'plantilla3', $cita['Fecha'], $cita['Hora'], 'en');
 
         $result = '<div class="alert alert-success" role="alert">✅ WhatsApp enviado a ' . $telefono . '</div>';
         marcarRecordatorioEnviado($conn, $cita['Ref_Agenda'], 'whatsapp');
